@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7CPaytone+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" 
+    integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" 
+    crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <title>Global Dashboard</title>
+
+    <style>
+        .button-success {
+            background: rgb(28,184,65);
+        }
+        .button-error {
+            background: rgb(202,60,60);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+    <section class='header'>
+        <div class='dingus'>
+            <img src='images/dw-logo.png' alt='dinguslogo' width='150' height='100' >
+        </div>
+        <div class='globaldash'>
+            <h1>Global Dashboard</h1>
+        </div>
+    </section>
+
+    <section id='score-card'>
+        <h2>Dingus</h2>
+        <div class="bluec" id='dingusCount'>0</div> 
+        <h2>Widget</h2>
+        <div class='bluec' id='widgetCount'>0</div>
+        <h2>Sales</h2>
+        <div><span class='greenc'>$</span><span class='bluec' id='totalCount'>0.00</span></div>
+    </section>
+
+    <section id="chart-container">
+        <div class='box1' class="charts" id="chart1" width="450vw" height="450vw" >
+            </div>
+
+        <div class='box2' class="charts" id="chart2" width="450vw" height="450vw" >
+            </div>
+
+    </section>
+
+    <section class='ordertable'>
+        <div class='ordertable'>
+            <table id='myTable'>
+            <caption>Order History</caption>
+            <colgroup>
+                <col span="1" style="background-color: darkgrey;">
+                <col><col><col><col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th rowspan="2">ID#</th>
+                    <th rowspan="2">Date</th>
+                    <th colspan="2">Quantity</th>
+                    <th rowspan="2">Total</th>
+                </tr>
+                <tr>
+                    <th>Dingus</th>
+                    <th>Widget</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                <td colspan="5">© 2020 D&W Worldwide.</td>
+                </tr>
+            </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <section class='forms'>
+        <div class='forms'>
+            <details>
+                <summary>Order Form</summary>
+                <div class='innerform'>
+                    <form class='pure-form' id='myForm'>
+                        <fieldset>
+                        Dingus <input id="dingusInput" type='text' value='0' oninput="calculate()" onclick="setButton()">
+                        @<input type='text' value='14.25' oninput="calculate()" id="@1" readonly>
+                        = $ <input type='text' value='0.00' id="result" readonly>
+                        <br> <br>
+
+                        Widget <input id = "widgetInput" type='text' value='0' oninput="calculate()" onclick="setButton()">
+                        @<input type='text' value='9.99' oninput="calculate()" id="@2" readonly>
+                        = $ <input type='text' value='0.00' id="result2" readonly>
+                        <br><br>
+
+                        Total $ <input type='text' value="0.00" id="totalValue" readonly>
+                        <br><br>
+                        <button type="button" class="button-error pure-button" onclick="cancelOrder()">Cancel</button>
+                        <button type="button" onkeyup="setButton()" class="button-success pure-button" id='myOrderButton' onclick="addOrder();highPie();highBar();" disabled>Order</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </details>
+        </div>
+    </section>
+    <script src="hw3.js">
+    </script>
+    </main>
+</body>
+</html>
